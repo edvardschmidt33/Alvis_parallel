@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#SBATCH --time=00:05:00
+#SBATCH --time=00:10:00
 #SBATCH -A NAISS2025-5-98
 #SBATCH --gpus-per-node=T4:1
 #SBATCH -J mnist_CLIP

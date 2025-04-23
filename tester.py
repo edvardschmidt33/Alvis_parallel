@@ -28,9 +28,21 @@ def main():
 
     ### Encoding ###
     print('Computing embeddings...')
+    BATCH_SIZE = 200  # Adjust based on memory (start small: 32, 64...)
+
+    all_image_features = []
+
     with torch.no_grad():
-        enc_images = model.encode_image(image_input)
+        for i in range(0, len(image_input), BATCH_SIZE):
+            batch = image_input[i:i+BATCH_SIZE].to(device)
+            features = model.encode_image(batch)
+            all_image_features.append(features.cpu())
+
+    enc_images = torch.cat(all_image_features, dim=0)  # Final shape: (N, D)
+
+    with torch.no_grad():
         enc_prompts = model.encode_text(text_input)
+    
     print('Done with embedding computation')
     ### Normalization ###
 
