@@ -4,3 +4,4 @@ from: pytorch/pytorch:2.2.1-cuda12.1-cudnn8-runtime
 conda install pandas pyyaml matplotlib scikit-learn numpy ftfy typing regex tqdm packaging
 pip3 install wandb
 pip3 install kornia
+pip install pycocotools
