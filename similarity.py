@@ -12,7 +12,7 @@ def main():
     enc_images = image_data["image"]  # shape (N, D)
     labels = image_data["labels"]  # list of ints, length N
 
-    text_data = torch.load("text_embeddings.pt")
+    text_data = torch.load("text_embeddings.pt", map_location=torch.device('cpu'))
     enc_prompts = text_data["prompt"]  # shape (10, D)
 
 
@@ -25,6 +25,7 @@ def main():
 
     accuracy = (prediction == labels).mean()
     print(f'Accuracy: {accuracy:.4f}')
+    print(len(prediction))
 
 if __name__ == '__main__':
     main()
