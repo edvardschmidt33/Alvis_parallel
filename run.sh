@@ -6,7 +6,7 @@
 #SBATCH -o logs/train_%j.out
 #SBATCH -e logs/train_%j.err 
 
-EXE="apptainer exec --nv /cephyr/users/schmidte/Alvis/Alvis_CLIP/example.sif python3"
+EXE="apptainer exec --nv /cephyr/users/<username>/Alvis/<dir>/example.sif python3"
 
 
 ${EXE} tester.py
